@@ -142,7 +142,7 @@ export default function CommuteGenieDiagram() {
           y={90}
           w={88}
           h={40}
-          label={"Trip planner \n agent"}
+          label={"Weather\nAgent"}
           fill="rgba(52,211,153,0.12)"
           stroke="#34d399"
         />
