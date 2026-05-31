@@ -121,7 +121,7 @@ export const EXPERIENCE: ExperienceEntry[] = [
       {
         title: "ML Data Pipeline",
         description:
-          "Engineered an end-to-end ingestion pipeline to collect, merge, and structure heterogeneous data — sustainability plans, emissions inventories, and census data — across 100+ municipalities.",
+          "Engineered an end-to-end ingestion pipeline to collect, merge, and structure heterogeneous data -  sustainability plans, emissions inventories, and census data - across 100+ municipalities.",
       },
       {
         title: "NLP & LLM Extraction",
@@ -233,7 +233,7 @@ export const PROJECTS = [
     subtitle: "Financial RAG Assistant",
     period: "2025",
     description:
-      "Gemini-powered financial analyst using RAG over the Financial PhraseBank — semantic search with Sentence-Transformers and Qdrant, plus real-time sentiment visualization in Streamlit.",
+      "Gemini-powered financial analyst using RAG over the Financial PhraseBank - semantic search with Sentence-Transformers and Qdrant, plus real-time sentiment visualization in Streamlit.",
     tags: ["RAG", "Gemini", "Qdrant", "Streamlit", "NLP", "Python"],
     github: "https://github.com/HrishitaaDLN/FinGptPro",
     icon: "fingpt",
@@ -243,7 +243,7 @@ export const PROJECTS = [
     subtitle: "Time-to-Event Churn Modeling",
     period: "2025",
     description:
-      "Reframes telecom churn as a survival problem on the IBM Telco dataset — CoxPH, Weibull AFT (C-index 0.87), and Random Survival Forests with an interactive Streamlit dashboard for curves, hazards, and retention insights.",
+      "Reframes telecom churn as a survival problem on the IBM Telco dataset - CoxPH, Weibull AFT (C-index 0.87), and Random Survival Forests with an interactive Streamlit dashboard for curves, hazards, and retention insights.",
     tags: ["Survival Analysis", "lifelines", "Streamlit", "CoxPH", "Python"],
     github: "https://github.com/HrishitaaDLN/Customer-Churn-Survival-Analysis",
     icon: "churn",

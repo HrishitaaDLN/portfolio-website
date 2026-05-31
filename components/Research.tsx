@@ -6,7 +6,7 @@ const RESEARCH_ITEMS = [
   {
     title: "ML Data Pipeline",
     description:
-      "Engineered an end-to-end ingestion pipeline to collect, merge, and structure heterogeneous data — sustainability plans, emissions inventories, and census data — across 100+ municipalities.",
+      "Engineered an end-to-end ingestion pipeline to collect, merge, and structure heterogeneous data - sustainability plans, emissions inventories, and census data - across 100+ municipalities.",
   },
   {
     title: "NLP & LLM Extraction",
