@@ -39,7 +39,7 @@ export default function About() {
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         <div className="space-y-5 text-white/70 leading-relaxed">
           <p className="text-lg text-white/80 font-medium">
-            I build AI systems that work in the real world — not just in notebooks.
+            I build AI systems that work in the real world - not just in notebooks.
           </p>
 
           <p>
@@ -51,7 +51,7 @@ export default function About() {
 
           <p>
             Before grad school I spent two years at OpenText as a software engineer, working
-            directly with enterprise clients — presenting POCs, gathering feedback, and shipping
+            directly with enterprise clients - presenting POCs, gathering feedback, and shipping
             production systems serving 2M+ users. I learned early that the best engineering
             isn&apos;t about elegant code. It&apos;s about finding what&apos;s broken and building
             the fix that actually sticks.
