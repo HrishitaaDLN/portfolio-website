@@ -260,6 +260,14 @@ export type Certification = {
 
 export const CERTIFICATIONS: Certification[] = [
   {
+    name: "LangChain for LLM Application Development",
+    issuer: "DeepLearning.AI · LangChain",
+    date: "May 30, 2026",
+    verifyUrl:
+      "https://learn.deeplearning.ai/accomplishments/a0ec6c11-b49c-4a9a-8168-fa0a948b8d6b?usp=sharing",
+    icon: "langchain",
+  },
+  {
     name: "AI Fluency: Framework & Foundations",
     issuer: "Anthropic Education",
     date: "May 30, 2026",
