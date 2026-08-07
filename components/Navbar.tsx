@@ -80,17 +80,21 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-          scrolled
-            ? "bg-[#050508]/95 border-b border-cyan-accent/10 py-3"
-            : "bg-transparent py-5"
+        className={`fixed top-0 left-0 right-0 z-[60] transition-colors duration-300 ${
+          open || scrolled
+            ? "bg-[#050508] border-b border-cyan-accent/10 py-3"
+            : "bg-transparent py-4 sm:py-5"
         }`}
       >
         <div className="nav-pipeline" aria-hidden>
           <div className="nav-pipeline-fill" style={{ transform: `scaleX(${progress})` }} />
         </div>
-        <nav className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-          <a href="#" className="font-display font-bold text-lg tracking-tight">
+        <nav className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+          <a
+            href="#"
+            className="font-display font-bold text-lg tracking-tight relative z-[70]"
+            onClick={() => setOpen(false)}
+          >
             <span className="text-cyan-accent">H</span>
             <span className="text-white/90">rishitaa</span>
           </a>
@@ -127,9 +131,9 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="md:hidden text-cyan-accent text-2xl"
+            className="md:hidden relative z-[70] text-cyan-accent text-2xl p-2 -mr-2"
             onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
+            aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
           >
             {open ? <HiX /> : <HiMenuAlt3 />}
@@ -137,16 +141,21 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {open && (
-        <div className="fixed inset-0 z-40 bg-[#050508]/98 md:hidden pt-24 px-8">
-          <ul className="flex flex-col gap-6">
+      <div
+        className={`fixed inset-0 z-[55] md:hidden bg-[#050508] transition-opacity duration-300 ${
+          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        aria-hidden={!open}
+      >
+        <nav className="flex flex-col justify-center h-full px-8 pt-20 pb-10 safe-area-pad">
+          <ul className="flex flex-col gap-5 sm:gap-6">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`font-display text-2xl transition-colors ${
-                    active === link.href ? "text-cyan-accent" : "text-white/80 hover:text-cyan-accent"
+                  className={`font-display text-3xl sm:text-4xl transition-colors block py-1 ${
+                    active === link.href ? "text-cyan-accent" : "text-white/85 active:text-cyan-accent"
                   }`}
                 >
                   {link.label}
@@ -154,8 +163,11 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-        </div>
-      )}
+          <p className="mt-auto font-mono text-xs text-white/35 pt-10">
+            Software Engineer - AI · UIC
+          </p>
+        </nav>
+      </div>
     </>
   );
 }

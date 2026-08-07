@@ -38,7 +38,7 @@ export default function TypewriterRoles() {
   }, [text, deleting, roleIndex]);
 
   return (
-    <p className="font-mono text-xl md:text-2xl text-white/90 mb-2 type-cursor min-h-[1.75rem]">
+    <p className="font-mono text-lg sm:text-xl md:text-2xl text-white/90 mb-2 type-cursor min-h-[1.75rem] break-words">
       {text || "\u00A0"}
     </p>
   );

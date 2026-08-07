@@ -38,11 +38,11 @@ export default function Experience() {
   }, []);
 
   return (
-    <section id="experience" className="relative py-20 md:py-24 mesh-gradient">
-      <div className="max-w-4xl mx-auto px-6">
+    <section id="experience" className="relative py-16 sm:py-20 md:py-24 mesh-gradient">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <Reveal>
           <p className="font-mono text-cyan-accent text-sm mb-2 text-center">Experience</p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-12 text-center">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-10 sm:mb-12 text-center">
             Career <span className="text-cyan-accent">Timeline</span>
           </h2>
         </Reveal>

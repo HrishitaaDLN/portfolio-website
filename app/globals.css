@@ -807,3 +807,23 @@
     opacity: 0 !important;
   }
 }
+
+.safe-area-pad {
+  padding-bottom: max(2.5rem, env(safe-area-inset-bottom));
+}
+
+@media (max-width: 767px) {
+  .glass-card:hover,
+  .reveal.is-visible.glass-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .rag-pulse .rag-stage {
+    min-width: 44px;
+  }
+
+  .btn-glow:hover {
+    transform: none;
+  }
+}

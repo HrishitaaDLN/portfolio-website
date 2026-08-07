@@ -57,9 +57,9 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-20 md:py-24 pb-28">
-      <div className="max-w-4xl mx-auto px-6">
-        <h2 className="font-display text-4xl md:text-5xl font-bold text-center mb-4">
+    <section id="contact" className="relative py-16 sm:py-20 md:py-24 pb-24 sm:pb-28">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
           <span className="bg-gradient-to-r from-cyan-accent via-white to-violet-accent bg-clip-text text-transparent">
             Let&apos;s Build Something
           </span>

@@ -22,7 +22,7 @@ export default function CommuteGenieCard({ project }: { project: CommuteProject 
   const panelId = "commute-genie-details";
 
   return (
-    <article className="glass-card p-6 md:p-8">
+    <article className="glass-card p-5 sm:p-6 md:p-8 overflow-hidden">
       <div className="flex flex-col gap-6 md:flex-row md:gap-4 md:items-start">
         <div className="flex gap-4 items-start flex-1 min-w-0">
           <CommuteGenieIcon />

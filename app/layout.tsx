@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Syne, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -17,6 +17,13 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
   preload: false,
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#050508",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(

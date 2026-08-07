@@ -23,7 +23,9 @@ export default function MagneticButton({
   const [reduced, setReduced] = useState(false);
 
   useEffect(() => {
-    setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
+    setReduced(reduced || coarse);
   }, []);
 
   const onMove = (e: MouseEvent<HTMLAnchorElement>) => {

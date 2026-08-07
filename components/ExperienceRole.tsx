@@ -31,18 +31,18 @@ export default function ExperienceRole({
         aria-hidden
       />
 
-      <div className="glass-card p-6 md:p-8">
+      <div className="glass-card p-5 sm:p-6 md:p-8">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
           <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-center gap-3 mb-1">
-              <h3 className="font-display text-xl font-bold">{job.title}</h3>
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-1">
+              <h3 className="font-display text-lg sm:text-xl font-bold">{job.title}</h3>
               {showSpark && <Sparkline active={open} />}
             </div>
             <p className="text-violet-accent font-mono text-sm mt-1">{job.company}</p>
             <p className="font-mono text-xs text-white/45">{job.location}</p>
           </div>
 
-          <div className="flex items-center gap-4 shrink-0 sm:pt-1">
+          <div className="flex flex-wrap items-center justify-between gap-3 sm:justify-end sm:gap-4 shrink-0 sm:pt-1">
             <span className="font-mono text-xs text-cyan-accent whitespace-nowrap leading-none">
               {job.period}
             </span>
