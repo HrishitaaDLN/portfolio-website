@@ -32,7 +32,7 @@ export default function CommuteGenieCard({ project }: { project: CommuteProject 
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="font-mono text-[10px] px-2 py-0.5 rounded border border-violet-accent/30 text-violet-accent/90"
+                className="project-tag skill-chip font-mono text-[10px] px-2 py-0.5 rounded border border-violet-accent/30 text-violet-accent/90"
               >
                 {tag}
               </span>

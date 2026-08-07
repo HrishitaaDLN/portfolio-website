@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { PERSON } from "@/lib/data";
-import { FaLinkedin, FaEnvelope, FaGithub, FaPaperPlane } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope, FaGithub, FaPaperPlane, FaCheck } from "react-icons/fa";
 
 const CONTACT_LINKS = [
   {
@@ -27,11 +27,15 @@ const CONTACT_LINKS = [
   },
 ];
 
+type SendStatus = "idle" | "sending" | "sent";
+
 export default function Contact() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<SendStatus>("idle");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (status !== "idle") return;
+
     const form = e.currentTarget;
     const data = new FormData(form);
     const name = String(data.get("name") || "").trim();
@@ -40,11 +44,16 @@ export default function Contact() {
 
     const subject = encodeURIComponent(`Portfolio message from ${name}`);
     const body = encodeURIComponent(`From: ${name} <${email}>\n\n${message}`);
-    window.location.href = `mailto:${PERSON.email}?subject=${subject}&body=${body}`;
+    const mailto = `mailto:${PERSON.email}?subject=${subject}&body=${body}`;
 
-    setSent(true);
-    form.reset();
-    setTimeout(() => setSent(false), 4000);
+    setStatus("sending");
+
+    window.setTimeout(() => {
+      window.location.href = mailto;
+      form.reset();
+      setStatus("sent");
+      window.setTimeout(() => setStatus("idle"), 3200);
+    }, 700);
   };
 
   return (
@@ -69,7 +78,7 @@ export default function Contact() {
                   href={link.href}
                   target={link.external ? "_blank" : undefined}
                   rel={link.external ? "noopener noreferrer" : undefined}
-                  className="flex items-center gap-4 p-4 rounded-xl glass-card hover:border-cyan-accent/40 transition-colors group"
+                  className="flex items-center gap-4 p-4 rounded-xl glass-card group"
                 >
                   <span className="p-3 rounded-lg bg-cyan-accent/10 shrink-0">
                     <Icon className="text-cyan-accent text-lg" />
@@ -96,7 +105,8 @@ export default function Contact() {
                 type="text"
                 required
                 autoComplete="name"
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-mono text-sm focus:border-cyan-accent/50 focus:outline-none"
+                disabled={status !== "idle"}
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-mono text-sm focus:border-cyan-accent/50 focus:outline-none disabled:opacity-60"
                 placeholder="Your name"
               />
             </div>
@@ -110,7 +120,8 @@ export default function Contact() {
                 type="email"
                 required
                 autoComplete="email"
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-mono text-sm focus:border-cyan-accent/50 focus:outline-none"
+                disabled={status !== "idle"}
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-mono text-sm focus:border-cyan-accent/50 focus:outline-none disabled:opacity-60"
                 placeholder="you@email.com"
               />
             </div>
@@ -123,20 +134,31 @@ export default function Contact() {
                 name="message"
                 required
                 rows={4}
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-mono text-sm focus:border-cyan-accent/50 focus:outline-none resize-none"
+                disabled={status !== "idle"}
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-mono text-sm focus:border-cyan-accent/50 focus:outline-none resize-none disabled:opacity-60"
                 placeholder="Tell me about your project..."
               />
             </div>
             <button
               type="submit"
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-lg font-mono text-sm bg-cyan-accent/15 border border-cyan-accent/40 text-white hover:bg-cyan-accent/25 transition-colors"
+              disabled={status !== "idle"}
+              className="btn-glow send-btn relative w-full flex items-center justify-center gap-2 py-3 rounded-lg font-mono text-sm bg-cyan-accent/15 border border-cyan-accent/40 text-white hover:bg-cyan-accent/25 disabled:cursor-default overflow-hidden min-h-[48px]"
             >
-              {sent ? (
-                "Opening email…"
-              ) : (
+              {status === "idle" && (
                 <>
-                  Send Message <FaPaperPlane className="text-cyan-accent" />
+                  Send Message <FaPaperPlane className="text-cyan-accent send-plane" />
                 </>
+              )}
+              {status === "sending" && (
+                <span className="inline-flex items-center gap-2">
+                  Sending
+                  <FaPaperPlane className="text-cyan-accent send-plane-fly" />
+                </span>
+              )}
+              {status === "sent" && (
+                <span className="inline-flex items-center gap-2 text-cyan-accent send-check">
+                  <FaCheck /> Message ready
+                </span>
               )}
             </button>
           </form>

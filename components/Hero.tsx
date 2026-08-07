@@ -1,5 +1,6 @@
 import HeroRobot from "@/components/visuals/HeroRobot";
 import TypewriterRoles from "@/components/TypewriterRoles";
+import MagneticButton from "@/components/ui/MagneticButton";
 import { PERSON } from "@/lib/data";
 
 export default function Hero() {
@@ -32,10 +33,7 @@ export default function Hero() {
             Hi, I&apos;m{" "}
             <span className="text-shimmer">{PERSON.shortName}</span>
           </h1>
-          <div
-            className="hero-enter"
-            style={{ ["--enter-delay" as string]: "220ms" }}
-          >
+          <div className="hero-enter" style={{ ["--enter-delay" as string]: "220ms" }}>
             <TypewriterRoles />
           </div>
           <p
@@ -54,13 +52,13 @@ export default function Hero() {
             className="flex flex-wrap gap-4 hero-enter"
             style={{ ["--enter-delay" as string]: "440ms" }}
           >
-            <a
+            <MagneticButton
               href="#projects"
               className="btn-glow px-6 py-3 rounded-lg font-mono text-sm bg-cyan-accent/10 border border-cyan-accent/50 text-cyan-accent hover:bg-cyan-accent/20"
             >
               View My Work
-            </a>
-            <a
+            </MagneticButton>
+            <MagneticButton
               href="/resume.pdf"
               download="Lakshmi_Naga_Hrishitaa_Resume.pdf"
               target="_blank"
@@ -68,7 +66,7 @@ export default function Hero() {
               className="btn-glow px-6 py-3 rounded-lg font-mono text-sm border border-violet-accent/50 text-violet-accent hover:bg-violet-accent/10"
             >
               Download Resume
-            </a>
+            </MagneticButton>
           </div>
         </div>
 

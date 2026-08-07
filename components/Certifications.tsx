@@ -23,10 +23,13 @@ export default function Certifications() {
               href={cert.verifyUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-card p-6 text-center h-full flex flex-col group"
+              className="glass-card cert-card p-6 text-center h-full flex flex-col group relative overflow-hidden"
             >
+              <span className="cert-stamp" aria-hidden>
+                ✓
+              </span>
               <div className="flex justify-center mb-4">
-                <div className="p-4 rounded-full bg-white/5">
+                <div className="p-4 rounded-full bg-white/5 cert-icon">
                   {CERT_ICONS[cert.icon] ?? (
                     <FaCertificate className="text-2xl text-cyan-accent" />
                   )}

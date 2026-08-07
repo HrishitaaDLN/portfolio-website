@@ -67,11 +67,12 @@ export default function About() {
         </div>
 
         <div className="flex flex-col items-center lg:items-end">
-          <div className="relative w-full max-w-sm">
+          <div className="relative w-full max-w-sm headshot-frame group">
             <div
-              className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-cyan-accent/40 to-violet-accent/40 opacity-60"
+              className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-cyan-accent/40 to-violet-accent/40 opacity-60 headshot-glow"
               aria-hidden
             />
+            <div className="headshot-ring absolute -inset-2 rounded-2xl pointer-events-none" aria-hidden />
             <div className="relative glass-card overflow-hidden rounded-2xl p-1">
               <Image
                 src="/headshot.webp"
@@ -109,10 +110,11 @@ export default function About() {
                   <h4 className="font-display font-semibold text-lg leading-snug">{group.title}</h4>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {group.skills.map((skill) => (
+                  {group.skills.map((skill, skillIndex) => (
                     <span
                       key={skill}
-                      className="skill-chip font-mono text-[11px] px-2 py-1 rounded bg-white/5 text-white/70 border border-white/5"
+                      className="skill-chip skill-chip-pop font-mono text-[11px] px-2 py-1 rounded bg-white/5 text-white/70 border border-white/5"
+                      style={{ ["--chip-delay" as string]: `${skillIndex * 35}ms` }}
                     >
                       {skill}
                     </span>

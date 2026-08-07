@@ -1,16 +1,22 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { NAV_LINKS } from "@/lib/data";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+
+const SECTION_IDS = NAV_LINKS.map((l) => l.href.slice(1));
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(NAV_LINKS[0]?.href ?? "#about");
+  const [underline, setUnderline] = useState({ left: 0, width: 0, ready: false });
+  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -20,6 +26,47 @@ export default function Navbar() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  useEffect(() => {
+    const elements = SECTION_IDS.map((id) => document.getElementById(id)).filter(
+      (el): el is HTMLElement => Boolean(el)
+    );
+    if (!elements.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]?.target.id) {
+          setActive(`#${visible[0].target.id}`);
+        }
+      },
+      { rootMargin: "-30% 0px -55% 0px", threshold: [0.1, 0.35, 0.6] }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  useLayoutEffect(() => {
+    const update = () => {
+      const link = linkRefs.current[active];
+      const list = listRef.current;
+      if (!link || !list) return;
+      const listRect = list.getBoundingClientRect();
+      const linkRect = link.getBoundingClientRect();
+      setUnderline({
+        left: linkRect.left - listRect.left,
+        width: linkRect.width,
+        ready: true,
+      });
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, [active, scrolled]);
 
   return (
     <>
@@ -36,17 +83,34 @@ export default function Navbar() {
             <span className="text-white/90">rishitaa</span>
           </a>
 
-          <ul className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="font-mono text-xs uppercase tracking-wider text-white/60 hover:text-cyan-accent transition-colors"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+          <ul ref={listRef} className="relative hidden md:flex items-center gap-8">
+            {NAV_LINKS.map((link) => {
+              const isActive = active === link.href;
+              return (
+                <li key={link.href}>
+                  <a
+                    ref={(node) => {
+                      linkRefs.current[link.href] = node;
+                    }}
+                    href={link.href}
+                    className={`font-mono text-xs uppercase tracking-wider transition-colors ${
+                      isActive ? "text-cyan-accent" : "text-white/60 hover:text-cyan-accent"
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              );
+            })}
+            <span
+              className="nav-underline absolute -bottom-2 h-0.5 rounded-full bg-cyan-accent"
+              style={{
+                left: underline.left,
+                width: underline.width,
+                opacity: underline.ready ? 1 : 0,
+              }}
+              aria-hidden
+            />
           </ul>
 
           <button
@@ -69,7 +133,9 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="font-display text-2xl text-white/80 hover:text-cyan-accent transition-colors"
+                  className={`font-display text-2xl transition-colors ${
+                    active === link.href ? "text-cyan-accent" : "text-white/80 hover:text-cyan-accent"
+                  }`}
                 >
                   {link.label}
                 </a>

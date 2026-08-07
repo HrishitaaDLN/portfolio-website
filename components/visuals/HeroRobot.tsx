@@ -43,8 +43,8 @@ export default function HeroRobot() {
           strokeWidth="1.5"
           opacity="0.9"
         />
-        <circle cx="140" cy="95" r="8" fill="#00FFE0" className="robot-eye" />
-        <circle cx="180" cy="95" r="8" fill="#00FFE0" className="robot-eye" />
+        <circle cx="140" cy="95" r="8" fill="#00FFE0" className="robot-eye robot-eye-left" />
+        <circle cx="180" cy="95" r="8" fill="#00FFE0" className="robot-eye robot-eye-right" />
         <line x1="160" y1="60" x2="160" y2="35" stroke="#7B2FFF" strokeWidth="2" />
         <circle cx="160" cy="30" r="6" fill="#7B2FFF" opacity="0.8" />
 
