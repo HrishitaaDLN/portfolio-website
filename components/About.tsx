@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Section from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
+import BrokenFixedMorph from "@/components/visuals/BrokenFixedMorph";
 import { PERSON, SKILL_GROUPS } from "@/lib/data";
 import {
   FaBrain,
@@ -17,6 +18,19 @@ const ICONS: Record<string, React.ReactNode> = {
   database: <FaDatabase className="text-cyan-accent" />,
   cloud: <FaCloud className="text-violet-accent" />,
 };
+
+const GLOW_SKILLS = new Set([
+  "Amazon Bedrock",
+  "LangGraph",
+  "RAG",
+  "Datadog",
+  "AWS",
+  "LLM APIs",
+  "ChromaDB",
+  "Cursor",
+  "Claude Code",
+  "Codex",
+]);
 
 export default function About() {
   return (
@@ -51,6 +65,8 @@ export default function About() {
             production. The workflow so smooth the user never thinks about it. Anyone can ship the
             happy path — I sweat the rest.
           </p>
+
+          <BrokenFixedMorph className="py-2" />
 
           <p>
             When I&apos;m not building software, I&apos;m painting or restoring old things. Turns
@@ -113,7 +129,9 @@ export default function About() {
                   {group.skills.map((skill, skillIndex) => (
                     <span
                       key={skill}
-                      className="skill-chip skill-chip-pop font-mono text-[11px] px-2 py-1 rounded bg-white/5 text-white/70 border border-white/5"
+                      className={`skill-chip skill-chip-pop font-mono text-[11px] px-2 py-1 rounded bg-white/5 text-white/70 border border-white/5 ${
+                        GLOW_SKILLS.has(skill) ? "skill-glow" : ""
+                      }`}
                       style={{ ["--chip-delay" as string]: `${skillIndex * 35}ms` }}
                     >
                       {skill}

@@ -273,6 +273,97 @@
   .cursor-trail-dot {
     transition: opacity 0.4s ease;
   }
+
+  .nav-pipeline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+  }
+
+  .nav-pipeline-fill {
+    height: 100%;
+    width: 100%;
+    transform-origin: left center;
+    transform: scaleX(0);
+    background: linear-gradient(90deg, #00ffe0, #7b2fff, #00ffe0);
+    background-size: 200% 100%;
+    animation: pipeline-shimmer 4s linear infinite;
+    transition: transform 0.15s linear;
+  }
+
+  .agent-node {
+    animation: agent-pulse 2.8s ease-in-out infinite;
+  }
+
+  .rag-pulse .rag-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 52px;
+  }
+
+  .rag-shard {
+    display: block;
+    width: 22px;
+    height: 8px;
+    border-radius: 2px;
+    background: rgba(123, 47, 255, 0.45);
+    border: 1px solid rgba(123, 47, 255, 0.6);
+    animation: rag-pulse 1.8s ease-in-out infinite;
+  }
+
+  .rag-vector {
+    display: block;
+    width: 28px;
+    height: 28px;
+    border-radius: 9999px;
+    border: 1px solid rgba(0, 255, 224, 0.55);
+    box-shadow: inset 0 0 12px rgba(0, 255, 224, 0.25);
+    animation: rag-vector 2.2s ease-in-out infinite;
+  }
+
+  .rag-hit {
+    display: block;
+    height: 5px;
+    border-radius: 99px;
+    background: linear-gradient(90deg, #00ffe0, transparent);
+    animation: rag-hit 1.6s ease-in-out infinite;
+  }
+
+  .rag-arrow {
+    animation: rag-arrow 1.4s ease-in-out infinite;
+  }
+
+  .sparkline-bar {
+    transition: background-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .sparkline-active .sparkline-bar {
+    background: #00ffe0;
+    animation: spark-bounce 0.7s ease;
+  }
+
+  .broken-path {
+    animation: path-fade-out 4s ease-in-out infinite;
+  }
+
+  .fixed-path {
+    stroke-dasharray: 240;
+    stroke-dashoffset: 240;
+    animation: path-draw 4s ease-in-out infinite;
+  }
+
+  .skill-glow {
+    border-color: rgba(0, 255, 224, 0.35) !important;
+    color: rgba(0, 255, 224, 0.95) !important;
+    background: rgba(0, 255, 224, 0.08) !important;
+    animation: skill-glow 3.2s ease-in-out infinite;
+  }
 }
 
 @keyframes fade-up {
@@ -450,6 +541,119 @@
   }
 }
 
+@keyframes pipeline-shimmer {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes agent-pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  50% {
+    filter: drop-shadow(0 0 6px rgba(0, 255, 224, 0.45));
+  }
+}
+
+@keyframes rag-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(2px);
+  }
+}
+
+@keyframes rag-vector {
+  0%,
+  100% {
+    box-shadow: inset 0 0 8px rgba(0, 255, 224, 0.2);
+  }
+  50% {
+    box-shadow: inset 0 0 16px rgba(0, 255, 224, 0.55), 0 0 12px rgba(0, 255, 224, 0.25);
+  }
+}
+
+@keyframes rag-hit {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes rag-arrow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(3px);
+  }
+}
+
+@keyframes spark-bounce {
+  0% {
+    transform: scaleY(0.55);
+  }
+  60% {
+    transform: scaleY(1.25);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes path-fade-out {
+  0%,
+  35% {
+    opacity: 0.85;
+  }
+  50%,
+  100% {
+    opacity: 0.15;
+  }
+}
+
+@keyframes path-draw {
+  0%,
+  35% {
+    stroke-dashoffset: 240;
+    opacity: 0.2;
+  }
+  55%,
+  85% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.85;
+  }
+}
+
+@keyframes skill-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(0, 255, 224, 0);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(0, 255, 224, 0.35);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -476,13 +680,33 @@
   .headshot-frame:hover .headshot-ring,
   .cert-card:hover .cert-icon,
   .glass-card:hover .project-tag,
-  .reveal.is-visible .skill-chip-pop {
+  .reveal.is-visible .skill-chip-pop,
+  .agent-node,
+  .agent-token,
+  .rag-shard,
+  .rag-vector,
+  .rag-hit,
+  .rag-arrow,
+  .sparkline-active .sparkline-bar,
+  .broken-path,
+  .fixed-path,
+  .skill-glow,
+  .nav-pipeline-fill {
     animation: none !important;
   }
 
   .skill-chip-pop {
     opacity: 1;
     transform: none;
+  }
+
+  .fixed-path {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  .broken-path {
+    opacity: 0.2;
   }
 
   .glass-card:hover,

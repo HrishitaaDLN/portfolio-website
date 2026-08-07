@@ -3,7 +3,14 @@
 import { useState } from "react";
 import type { ExperienceEntry } from "@/lib/data";
 import Reveal from "@/components/ui/Reveal";
+import Sparkline from "@/components/visuals/Sparkline";
 import { FaChevronDown } from "react-icons/fa";
+
+const TELEMETRY_ROLES = new Set([
+  "Graduate Research Assistant",
+  "Associate Software Engineer",
+  "Software Engineering Intern",
+]);
 
 export default function ExperienceRole({
   job,
@@ -14,6 +21,7 @@ export default function ExperienceRole({
 }) {
   const [open, setOpen] = useState(false);
   const panelId = `experience-${job.title.replace(/\s+/g, "-").toLowerCase()}-${job.period.replace(/\s+/g, "-")}`;
+  const showSpark = TELEMETRY_ROLES.has(job.title);
 
   return (
     <Reveal as="article" className="relative pl-10" delayMs={delayMs}>
@@ -25,7 +33,10 @@ export default function ExperienceRole({
       <div className="glass-card p-6 md:p-8">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
           <div className="min-w-0 flex-1">
-            <h3 className="font-display text-xl font-bold">{job.title}</h3>
+            <div className="flex flex-wrap items-center gap-3 mb-1">
+              <h3 className="font-display text-xl font-bold">{job.title}</h3>
+              {showSpark && <Sparkline active={open} />}
+            </div>
             <p className="text-violet-accent font-mono text-sm mt-1">{job.company}</p>
             <p className="font-mono text-xs text-white/45">{job.location}</p>
           </div>

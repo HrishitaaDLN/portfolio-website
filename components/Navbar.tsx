@@ -12,6 +12,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(NAV_LINKS[0]?.href ?? "#about");
+  const [progress, setProgress] = useState(0);
   const [underline, setUnderline] = useState({ left: 0, width: 0, ready: false });
   const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
   const listRef = useRef<HTMLUListElement>(null);
@@ -25,10 +26,13 @@ export default function Navbar() {
 
   useEffect(() => {
     const updateActive = () => {
-      setScrolled(window.scrollY > 60);
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(docHeight > 0 ? Math.min(1, scrollTop / docHeight) : 0);
+      setScrolled(scrollTop > 60);
 
       const nearBottom =
-        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
+        window.innerHeight + scrollTop >= document.documentElement.scrollHeight - 80;
       if (nearBottom) {
         setActive(`#${SECTION_IDS[SECTION_IDS.length - 1]}`);
         return;
@@ -82,6 +86,9 @@ export default function Navbar() {
             : "bg-transparent py-5"
         }`}
       >
+        <div className="nav-pipeline" aria-hidden>
+          <div className="nav-pipeline-fill" style={{ transform: `scaleX(${progress})` }} />
+        </div>
         <nav className="max-w-6xl mx-auto px-6 flex items-center justify-between">
           <a href="#" className="font-display font-bold text-lg tracking-tight">
             <span className="text-cyan-accent">H</span>

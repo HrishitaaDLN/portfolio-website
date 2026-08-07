@@ -1,5 +1,10 @@
+"use client";
+
 import Section from "@/components/ui/Section";
 import ResearchGlobe from "@/components/visuals/ResearchGlobe";
+import AgentOrbit from "@/components/visuals/AgentOrbit";
+import TypingConsole from "@/components/visuals/TypingConsole";
+import AccuracyCounter from "@/components/visuals/AccuracyCounter";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 const RESEARCH_ITEMS = [
@@ -37,7 +42,7 @@ export default function Research() {
       }
     >
       <div className="glass-card p-6 md:p-10 border border-cyan-accent/20">
-        <div className="grid lg:grid-cols-3 gap-10 items-center">
+        <div className="grid lg:grid-cols-3 gap-10 items-start">
           <div className="lg:col-span-2">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-3">
               <span className="font-mono text-xs text-violet-accent uppercase tracking-wider">
@@ -56,6 +61,13 @@ export default function Research() {
               IDIATER (Infrastructure and Decision Intelligence for Accelerating Technology &amp;
               Energy Resilience) Research Group
             </p>
+
+            <TypingConsole className="mb-6" />
+
+            <div className="mb-8">
+              <AccuracyCounter value={95} label="PDF extraction accuracy" />
+            </div>
+
             <ul className="space-y-5">
               {RESEARCH_ITEMS.map((item) => (
                 <li key={item.title} className="text-sm">
@@ -73,7 +85,10 @@ export default function Research() {
               Live Dashboard <FaExternalLinkAlt className="text-xs" />
             </a>
           </div>
-          <ResearchGlobe />
+          <div className="space-y-6">
+            <ResearchGlobe />
+            <AgentOrbit />
+          </div>
         </div>
       </div>
     </Section>
