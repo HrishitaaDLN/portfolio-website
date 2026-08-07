@@ -5,6 +5,8 @@ import { NAV_LINKS } from "@/lib/data";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 
 const SECTION_IDS = NAV_LINKS.map((l) => l.href.slice(1));
+/** Distance from top of viewport where a section becomes "active" */
+const ACTIVE_OFFSET = 140;
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -15,12 +17,6 @@ export default function Navbar() {
   const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
@@ -28,25 +24,34 @@ export default function Navbar() {
   }, [open]);
 
   useEffect(() => {
-    const elements = SECTION_IDS.map((id) => document.getElementById(id)).filter(
-      (el): el is HTMLElement => Boolean(el)
-    );
-    if (!elements.length) return;
+    const updateActive = () => {
+      setScrolled(window.scrollY > 60);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]?.target.id) {
-          setActive(`#${visible[0].target.id}`);
+      const nearBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
+      if (nearBottom) {
+        setActive(`#${SECTION_IDS[SECTION_IDS.length - 1]}`);
+        return;
+      }
+
+      let current = SECTION_IDS[0];
+      for (const id of SECTION_IDS) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top - ACTIVE_OFFSET <= 0) {
+          current = id;
         }
-      },
-      { rootMargin: "-30% 0px -55% 0px", threshold: [0.1, 0.35, 0.6] }
-    );
+      }
+      setActive(`#${current}`);
+    };
 
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    updateActive();
+    window.addEventListener("scroll", updateActive, { passive: true });
+    window.addEventListener("resize", updateActive);
+    return () => {
+      window.removeEventListener("scroll", updateActive);
+      window.removeEventListener("resize", updateActive);
+    };
   }, []);
 
   useLayoutEffect(() => {
