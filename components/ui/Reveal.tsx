@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, type ElementType, type ReactNode } from "react";
 
 type RevealProps = {
   children: ReactNode;
@@ -13,9 +13,10 @@ export default function Reveal({
   children,
   className = "",
   delayMs = 0,
-  as: Tag = "div",
+  as = "div",
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null);
+  const Tag = as as ElementType;
 
   useEffect(() => {
     const node = ref.current;
@@ -43,8 +44,7 @@ export default function Reveal({
 
   return (
     <Tag
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
+      ref={ref}
       className={`reveal ${className}`}
       style={{ ["--reveal-delay" as string]: `${delayMs}ms` }}
     >
