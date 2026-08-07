@@ -2,44 +2,52 @@
 
 import { useState } from "react";
 import type { ExperienceEntry } from "@/lib/data";
+import Reveal from "@/components/ui/Reveal";
 import { FaChevronDown } from "react-icons/fa";
 
-export default function ExperienceRole({ job }: { job: ExperienceEntry }) {
+export default function ExperienceRole({
+  job,
+  delayMs = 0,
+}: {
+  job: ExperienceEntry;
+  delayMs?: number;
+}) {
   const [open, setOpen] = useState(false);
   const panelId = `experience-${job.title.replace(/\s+/g, "-").toLowerCase()}-${job.period.replace(/\s+/g, "-")}`;
 
   return (
-    <article className="relative pl-10">
+    <Reveal as="article" className="relative pl-10" delayMs={delayMs}>
       <div
-        className="absolute left-0 top-6 w-4 h-4 rounded-full bg-cyan-accent border-4 border-[#050508]"
+        className="absolute left-0 top-6 w-4 h-4 rounded-full bg-cyan-accent border-4 border-[#050508] timeline-dot"
         aria-hidden
       />
 
       <div className="glass-card p-6 md:p-8">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <div className="flex-1 min-w-0">
-            <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
-              <h3 className="font-display text-xl font-bold">{job.title}</h3>
-              <span className="font-mono text-xs text-cyan-accent shrink-0">
-                {job.period}
-              </span>
-            </div>
-            <p className="text-violet-accent font-mono text-sm">{job.company}</p>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+          <div className="min-w-0 flex-1">
+            <h3 className="font-display text-xl font-bold">{job.title}</h3>
+            <p className="text-violet-accent font-mono text-sm mt-1">{job.company}</p>
             <p className="font-mono text-xs text-white/45">{job.location}</p>
           </div>
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-controls={panelId}
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white/60 hover:text-cyan-accent transition-colors shrink-0"
-          >
-            {open ? "Hide details" : "View details"}
-            <FaChevronDown
-              className={`text-[10px] transition-transform duration-300 ${open ? "rotate-180" : ""}`}
-              aria-hidden
-            />
-          </button>
+
+          <div className="flex items-center gap-4 shrink-0 sm:pt-1">
+            <span className="font-mono text-xs text-cyan-accent whitespace-nowrap leading-none">
+              {job.period}
+            </span>
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              aria-controls={panelId}
+              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white/60 hover:text-cyan-accent transition-colors leading-none"
+            >
+              {open ? "Hide details" : "View details"}
+              <FaChevronDown
+                className={`text-[10px] transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+                aria-hidden
+              />
+            </button>
+          </div>
         </div>
 
         <div
@@ -75,6 +83,6 @@ export default function ExperienceRole({ job }: { job: ExperienceEntry }) {
           </div>
         </div>
       </div>
-    </article>
+    </Reveal>
   );
 }

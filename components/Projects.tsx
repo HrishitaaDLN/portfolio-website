@@ -1,5 +1,6 @@
 import CommuteGenieCard from "@/components/CommuteGenieCard";
 import Section from "@/components/ui/Section";
+import Reveal from "@/components/ui/Reveal";
 import { PROJECTS } from "@/lib/data";
 import {
   ChurnIcon,
@@ -30,15 +31,23 @@ export default function Projects() {
       }
     >
       <div className="flex flex-col gap-6">
-        {PROJECTS.map((project) => {
+        {PROJECTS.map((project, i) => {
           if (project.icon === "commute") {
-            return <CommuteGenieCard key={project.name} project={project} />;
+            return (
+              <Reveal key={project.name} delayMs={i * 70}>
+                <CommuteGenieCard project={project} />
+              </Reveal>
+            );
           }
 
           const Icon = ICON_MAP[project.icon as keyof typeof ICON_MAP];
 
           return (
-            <article key={project.name} className="glass-card p-6 md:p-8">
+            <Reveal
+              key={project.name}
+              delayMs={i * 70}
+            >
+              <article className="glass-card p-6 md:p-8">
               <div className="flex flex-col gap-6 md:flex-row md:gap-4 md:items-start">
                 <div className="flex gap-4 items-start flex-1">
                   {Icon && <Icon />}
@@ -53,7 +62,7 @@ export default function Projects() {
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="font-mono text-[10px] px-2 py-0.5 rounded border border-violet-accent/30 text-violet-accent/90"
+                          className="skill-chip font-mono text-[10px] px-2 py-0.5 rounded border border-violet-accent/30 text-violet-accent/90"
                         >
                           {tag}
                         </span>
@@ -84,7 +93,8 @@ export default function Projects() {
                   </div>
                 </div>
               </div>
-            </article>
+              </article>
+            </Reveal>
           );
         })}
       </div>
