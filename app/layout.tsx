@@ -22,11 +22,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
   ),
-  title: "Hrishitaa Dharmavarapu | AI Engineer Portfolio",
+  title: "Hrishitaa Dharmavarapu | Software Engineer - AI Portfolio",
   description:
-    "AI Engineer & MS Computer Science @ UIC. Building ML systems, LLM applications, and data pipelines with real-world impact.",
+    "Software Engineer - AI & MS Computer Science @ UIC. Building ML systems, LLM applications, and data pipelines with real-world impact.",
   keywords: [
-    "AI Engineer",
+    "Software Engineer - AI",
     "Machine Learning",
     "LLM",
     "RAG",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Lakshmi Naga Hrishitaa Dharmavarapu" }],
   openGraph: {
-    title: "Hrishitaa Dharmavarapu | AI Engineer",
+    title: "Hrishitaa Dharmavarapu | Software Engineer - AI",
     description:
       "Building intelligent systems at the intersection of AI, data, and impact.",
     type: "website",
@@ -47,13 +47,13 @@ export const metadata: Metadata = {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "Hrishitaa — AI Engineer Portfolio",
+        alt: "Hrishitaa — Software Engineer - AI Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hrishitaa Dharmavarapu | AI Engineer",
+    title: "Hrishitaa Dharmavarapu | Software Engineer - AI",
     description: "ML systems, LLM apps, and data pipelines",
     images: ["/og-image.svg"],
   },

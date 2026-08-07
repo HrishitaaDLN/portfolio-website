@@ -1,7 +1,7 @@
 export const PERSON = {
   name: "Lakshmi Naga Hrishitaa Dharmavarapu",
   shortName: "Hrishitaa",
-  role: "AI Engineer",
+  role: "Software Engineer - AI",
   education: "MS Computer Science @ UIC",
   email: "ldhar@uic.edu",
   github: "https://github.com/HrishitaaDLN",
@@ -10,7 +10,7 @@ export const PERSON = {
 };
 
 export const TYPEWRITER_ROLES = [
-  "AI Engineer",
+  "Software Engineer - AI",
   "ML Researcher",
   "LLM Builder",
   "Data Scientist",
@@ -29,69 +29,77 @@ export const NAV_LINKS = [
 /** Matches resume — Technical Skills section */
 export const SKILL_GROUPS = [
   {
-    title: "ML & AI",
+    title: "Programming Languages",
+    icon: "code",
+    skills: ["Python", "JavaScript", "TypeScript", "HTML", "CSS", "SQL", "Bash"],
+  },
+  {
+    title: "AI/ML Engineering",
     icon: "brain",
     skills: [
-      "Python",
-      "PyTorch",
-      "TensorFlow",
-      "scikit-learn",
-      "XGBoost",
-      "Keras",
-      "NLP",
-      "spaCy",
-      "LLM Applications",
-      "RAG",
+      "LLM APIs",
       "LangGraph",
       "LangChain",
+      "RAG",
+      "ChromaDB",
+      "Prompt Engineering",
+      "Context Management",
+      "Agent Evaluation",
+      "Guardrails",
+      "PII Redaction",
+      "Human-in-the-Loop",
+      "LangSmith",
     ],
   },
   {
-    title: "Data Science",
-    icon: "chart",
-    skills: [
-      "SQL",
-      "Feature Engineering",
-      "Statistical Modeling",
-      "Hypothesis Testing",
-      "A/B Testing",
-      "Causal Inference",
-      "pandas",
-      "SciPy",
-    ],
-  },
-  {
-    title: "MLOps & Infrastructure",
+    title: "Full-Stack & APIs",
     icon: "server",
     skills: [
-      "MLflow",
-      "Docker",
-      "Kubernetes",
-      "FastAPI",
-      "CI/CD",
+      "React",
       "REST APIs",
-      "Git",
-      "Linux",
-      "Terraform",
-      "AWS CDK",
+      "gRPC",
+      "GraphQL",
+      "FastAPI",
+      "Flask",
+      "Webhooks",
+      "Stripe",
+      "UI/API/DB Architecture",
     ],
   },
   {
-    title: "Data Engineering",
+    title: "Data & Search",
     icon: "database",
     skills: [
-      "ETL Pipelines",
       "Spark",
       "Hadoop",
       "Elasticsearch",
-      "MySQL",
-      "AWS (S3, EC2, RDS, Redshift)",
+      "Redis",
+      "PostgreSQL",
+      "pandas",
+      "NumPy",
+      "Matplotlib",
     ],
   },
   {
-    title: "Visualization",
-    icon: "viz",
-    skills: ["Tableau", "Looker Studio", "Streamlit", "Matplotlib"],
+    title: "Cloud, DevOps & Tools",
+    icon: "cloud",
+    skills: [
+      "AWS",
+      "Vercel",
+      "API Gateway",
+      "S3",
+      "Docker",
+      "Kubernetes",
+      "CI/CD",
+      "A/B Testing",
+      "Datadog",
+      "Pytest",
+      "Git",
+      "Cursor AI",
+      "Claude Code",
+      "Salesforce",
+      "Jira",
+    ],
   },
 ];
 
@@ -111,32 +119,49 @@ export type ExperienceEntry = {
 
 export const EXPERIENCE: ExperienceEntry[] = [
   {
-    title: "Research Assistant",
-    company: "University of Illinois Chicago",
+    title: "Graduate Research Assistant",
+    company: "UIC Business School",
     location: "Chicago, IL",
-    period: "May 2025 – Present",
-    group:
-      "IDIATER (Infrastructure and Decision Intelligence for Accelerating Technology & Energy Resilience) Research Group",
+    period: "May 2025 – May 2026",
+    group: "University of Illinois at Chicago",
     bullets: [
       {
-        title: "ML Data Pipeline",
+        title: "Multi-Agent Extraction",
         description:
-          "Engineered an end-to-end ingestion pipeline to collect, merge, and structure heterogeneous data -  sustainability plans, emissions inventories, and census data - across 100+ municipalities.",
+          "Architected a scalable manager-worker multi-agent system with LangChain and Amazon Bedrock, delivering structured extraction from unstructured PDFs across 100+ municipalities at 95%+ accuracy.",
       },
       {
-        title: "NLP & LLM Extraction",
+        title: "Chroma RAG Pipeline",
         description:
-          "Built a prompt-engineered LLM document parsing system converting raw municipal PDFs into structured datasets with 95%+ extraction accuracy using NLP extraction chains.",
+          "Engineered a Chroma RAG pipeline with prompt design and context management, lifting retrieval precision by 40% across inconsistent document formats.",
       },
       {
-        title: "Experiment Tracking & Feature Engineering",
+        title: "Telemetry & Reliability",
         description:
-          "Tracked model runs with MLflow and transformed 100+ municipal financial reports into analysis-ready feature sets; built Streamlit dashboards presented to urban planning groups, the Metropolitan Mayors Caucus, and at the SRI Congress spanning 80+ countries.",
+          "Instrumented the pipeline with Datadog telemetry and automated failure detection, cutting silent data corruption by 70%.",
       },
       {
         title: "Research Impact",
         description:
-          "Research accepted to the Sustainability Research and Innovation Congress (SRI) spanning 80+ countries; findings adopted by local governments to benchmark climate investments.",
+          "Presented the work to the Sustainability Research and Innovation Congress, reaching an audience across 80+ countries.",
+      },
+    ],
+  },
+  {
+    title: "Full Stack Developer",
+    company: "University of Illinois at Chicago",
+    location: "Chicago, IL",
+    period: "Oct 2024 – May 2025",
+    bullets: [
+      {
+        title: "Mental Health Application",
+        description:
+          "Built and shipped a full-stack mental health application with React, FastAPI, and PostgreSQL, leveraging Cursor AI to cut development time by 50%.",
+      },
+      {
+        title: "Production Deployment",
+        description:
+          "Deployed to production on AWS with CI/CD and monitoring, now used internally across UI Health after piloting with 15 teams.",
       },
     ],
   },
@@ -144,42 +169,27 @@ export const EXPERIENCE: ExperienceEntry[] = [
     title: "Associate Software Engineer",
     company: "OpenText Technologies",
     location: "Hyderabad, India",
-    period: "Oct 2022 – Jun 2024",
+    period: "Oct 2022 – June 2024",
     bullets: [
       {
-        title: "Client-Facing POC to Production",
+        title: "Full-Stack Platform",
         description:
-          "Presented analytics platform demos to enterprise clients, gathered feedback, and iteratively evolved POCs into a production-grade Python + FastAPI platform on AWS serving 100+ stakeholders.",
+          "Designed a React and TypeScript frontend over a FastAPI backend using modular object-oriented design, delivering real-time dashboards to enterprise clients at scale.",
       },
       {
-        title: "Full-Stack Analytics Platform",
+        title: "Backend & CI/CD",
         description:
-          "Built React frontend over a FastAPI backend delivering real-time analytics dashboards to enterprise clients, owning every layer from UI components to API design and deployment.",
+          "Architected and scaled backend services behind an AWS API Gateway, automating build, test, and deployment via CI/CD to cut release time by 40%.",
       },
       {
-        title: "ML-Backed Analytics Platform",
+        title: "Performance Optimization",
         description:
-          "Architected a scalable service layer replacing ad hoc SQL/Excel workflows; incorporated client feedback across iteration cycles to align product behavior with enterprise business needs.",
+          "Used Datadog APM to pinpoint SQL bottlenecks on a 2M+ user platform, applying query tuning and indexing to cut response times by 30%.",
       },
       {
-        title: "Container Orchestration",
+        title: "Test Automation",
         description:
-          "Deployed and managed containerized services using Kubernetes and Docker, ensuring high availability and scalable infrastructure across development and production environments.",
-      },
-      {
-        title: "Large-Scale ETL",
-        description:
-          "Built Spark and Hadoop pipelines processing up to 1 TB via AWS S3, automating PDF report generation and eliminating 20+ hours/month of manual effort.",
-      },
-      {
-        title: "Search & Inference Optimization",
-        description:
-          "Integrated Elasticsearch to offload high-latency queries, reducing response latency by 35% for a system serving 2M+ users.",
-      },
-      {
-        title: "Pipeline Validation Automation",
-        description:
-          "Automated end-to-end data validation and UI testing workflows, cutting manual testing by 60% and reducing production release risk by 50–60%.",
+          "Built automated end-to-end validation and UI test suites, driving up automation coverage and cutting manual testing effort by 60%.",
       },
     ],
   },
@@ -187,23 +197,43 @@ export const EXPERIENCE: ExperienceEntry[] = [
     title: "Software Engineering Intern",
     company: "OpenText Technologies",
     location: "Hyderabad, India",
-    period: "Aug 2022 – Sep 2022",
+    period: "Aug 2022 – Oct 2022",
     bullets: [
       {
-        title: "Data Integrity & Query Optimization",
+        title: "S3 Multipart Uploads",
         description:
-          "Maintained and optimized MySQL schemas using joins, indexes, and migrations to ensure data integrity; resolved ~40% of cross-layer issues across search and database components.",
+          "Owned resolution of a production-breaking 1 TB upload failure on a 2M+ user platform, implementing S3 multipart uploads to slash upload time by 60%.",
       },
       {
-        title: "Deployment & CI/CD Support",
+        title: "Backend Reliability",
         description:
-          "Assisted in deploying containerized services to AWS using Docker and contributed to CI/CD pipeline setup, supporting reliable and repeatable production deployments.",
+          "Drove backend reliability with functional and unit test suites in Pytest, reducing production defects by 30%.",
       },
     ],
   },
 ];
 
 export const PROJECTS = [
+  {
+    name: "Clinical Documentation Helper",
+    subtitle: "Multi-Agent GenAI for Clinical Workflows",
+    period: "May 2025 – May 2026",
+    description:
+      "Multi-agent GenAI system with LangGraph and AWS Textract that extracts data from clinical document images, maintains patient records, and automates scheduling, checkup reminders, and patient notifications. Includes PII redaction and human-in-the-loop approval before critical actions; React, FastAPI, and PostgreSQL platform used internally by UI Health clinicians.",
+    tags: ["LangGraph", "AWS Textract", "React", "FastAPI", "PostgreSQL", "Guardrails"],
+    github: "#",
+    icon: "clinical",
+  },
+  {
+    name: "Behavioral Health Reference Matcher",
+    subtitle: "Hybrid Retrieval Referral Tool",
+    period: "Jan 2026",
+    description:
+      "Staff-facing referral tool that parses free-text client needs and matches them to treatment programs using hybrid retrieval — structured filters plus semantic search over ChromaDB. LangGraph agent with input/output hooks ranks programs and explains each match, achieving 85% recall@5 on a 15-query evaluation set.",
+    tags: ["LangGraph", "RAG", "ChromaDB", "FastAPI", "React", "PostgreSQL"],
+    github: "#",
+    icon: "referral",
+  },
   {
     name: "CommuteGenie",
     subtitle: "Multi-Agent AI Transportation Assistant",

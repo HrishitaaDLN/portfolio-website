@@ -4,24 +4,24 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 
 const RESEARCH_ITEMS = [
   {
-    title: "ML Data Pipeline",
+    title: "Multi-Agent Extraction",
     description:
-      "Engineered an end-to-end ingestion pipeline to collect, merge, and structure heterogeneous data - sustainability plans, emissions inventories, and census data - across 100+ municipalities.",
+      "Architected a scalable manager-worker multi-agent system with LangChain and Amazon Bedrock, delivering structured extraction from unstructured PDFs across 100+ municipalities at 95%+ accuracy.",
   },
   {
-    title: "NLP & LLM Extraction",
+    title: "Chroma RAG Pipeline",
     description:
-      "Built a prompt-engineered LLM document parsing system converting raw municipal PDFs into structured datasets with 95%+ extraction accuracy using NLP extraction chains.",
+      "Engineered a Chroma RAG pipeline with prompt design and context management, lifting retrieval precision by 40% across inconsistent document formats.",
   },
   {
-    title: "Experiment Tracking & Feature Engineering",
+    title: "Telemetry & Reliability",
     description:
-      "Tracked model runs with MLflow and transformed 100+ municipal financial reports into analysis-ready feature sets; built Streamlit dashboards presented to urban planning groups, the Metropolitan Mayors Caucus, and at the SRI Congress spanning 80+ countries.",
+      "Instrumented the pipeline with Datadog telemetry and automated failure detection, cutting silent data corruption by 70%.",
   },
   {
     title: "Research Impact",
     description:
-      "Research accepted to the Sustainability Research and Innovation Congress (SRI) spanning 80+ countries; findings adopted by local governments to benchmark climate investments.",
+      "Presented the work to the Sustainability Research and Innovation Congress, reaching an audience across 80+ countries.",
   },
 ];
 
@@ -43,14 +43,14 @@ export default function Research() {
               <span className="font-mono text-xs text-violet-accent uppercase tracking-wider">
                 IDIATER · UIC
               </span>
-              <span className="font-mono text-xs text-cyan-accent">May 2025 – Present</span>
+              <span className="font-mono text-xs text-cyan-accent">May 2025 – May 2026</span>
             </div>
             <h3 className="font-display text-xl md:text-2xl font-bold mb-2 leading-snug">
               Infrastructure and Decision Intelligence for Accelerating Technology &amp; Energy
               Resilience (IDIATER)
             </h3>
             <p className="font-mono text-sm text-white/50 mb-2">
-              University of Illinois at Chicago · Research Assistant
+              University of Illinois at Chicago · Graduate Research Assistant
             </p>
             <p className="text-white/60 text-sm mb-6 leading-relaxed">
               IDIATER (Infrastructure and Decision Intelligence for Accelerating Technology &amp;

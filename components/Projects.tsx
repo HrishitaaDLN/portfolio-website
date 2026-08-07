@@ -1,13 +1,21 @@
 import CommuteGenieCard from "@/components/CommuteGenieCard";
 import Section from "@/components/ui/Section";
 import { PROJECTS } from "@/lib/data";
-import { ChurnIcon, FairnessIcon, FinGptIcon } from "@/components/visuals/ProjectIcons";
+import {
+  ChurnIcon,
+  ClinicalIcon,
+  FairnessIcon,
+  FinGptIcon,
+  ReferralIcon,
+} from "@/components/visuals/ProjectIcons";
 import { FaExternalLinkAlt, FaFilePdf, FaGithub } from "react-icons/fa";
 
 const ICON_MAP = {
   fairness: FairnessIcon,
   fingpt: FinGptIcon,
   churn: ChurnIcon,
+  clinical: ClinicalIcon,
+  referral: ReferralIcon,
 };
 
 export default function Projects() {

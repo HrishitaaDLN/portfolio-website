@@ -4,16 +4,17 @@ import { PERSON } from "@/lib/data";
 
 const TECH_TAGS = [
   "LangGraph",
-  "LangChain",
   "RAG",
+  "ChromaDB",
   "FastAPI",
   "React",
-  "MLflow",
+  "PostgreSQL",
+  "AWS",
   "Docker",
   "Kubernetes",
-  "Terraform",
-  "AWS",
+  "Datadog",
   "Python",
+  "TypeScript",
 ];
 
 const SKILL_BARS = [
@@ -62,7 +63,7 @@ export default function About() {
             <li>Multi-agent systems with LangGraph, LangChain, and RAG pipelines</li>
             <li>LLM document parsing and prompt engineering at production accuracy</li>
             <li>Full-stack delivery from FastAPI backends to React frontends</li>
-            <li>MLOps with MLflow, Docker, Kubernetes, Terraform, and AWS</li>
+            <li>Production observability with Datadog, CI/CD, Docker, and AWS</li>
           </ul>
 
           <p>

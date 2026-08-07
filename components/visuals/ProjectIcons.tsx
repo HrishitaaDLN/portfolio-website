@@ -60,3 +60,35 @@ export function ChurnIcon() {
     </svg>
   );
 }
+
+export function ClinicalIcon() {
+  return (
+    <svg viewBox="0 0 80 80" className="w-14 h-14 shrink-0" aria-hidden>
+      <rect x="18" y="14" width="44" height="52" rx="6" fill="#1a1a2e" stroke="#7B2FFF" strokeWidth="1.5" />
+      <rect x="34" y="24" width="12" height="32" rx="2" fill="none" stroke="#00FFE0" strokeWidth="2" />
+      <rect x="24" y="34" width="32" height="12" rx="2" fill="none" stroke="#00FFE0" strokeWidth="2" />
+      <circle cx="58" cy="22" r="8" fill="#1a1a2e" stroke="#00FFE0" strokeWidth="1.5" />
+      <path d="M55 22 L57 24 L61 19" fill="none" stroke="#00FFE0" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function ReferralIcon() {
+  return (
+    <svg viewBox="0 0 80 80" className="w-14 h-14 shrink-0" aria-hidden>
+      <circle cx="28" cy="28" r="12" fill="#1a1a2e" stroke="#00FFE0" strokeWidth="1.5" />
+      <circle cx="52" cy="52" r="12" fill="#1a1a2e" stroke="#7B2FFF" strokeWidth="1.5" />
+      <path
+        d="M36 36 L44 44"
+        stroke="#00FFE0"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeDasharray="3 3"
+      />
+      <circle cx="28" cy="28" r="3" fill="#00FFE0" />
+      <circle cx="52" cy="52" r="3" fill="#7B2FFF" />
+      <path d="M48 20 L58 20 L58 30" fill="none" stroke="#00FFE0" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M58 20 L46 32" fill="none" stroke="#00FFE0" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}

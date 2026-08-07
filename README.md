@@ -1,4 +1,4 @@
-# Hrishitaa — AI Engineer Portfolio
+# Hrishitaa — Software Engineer - AI Portfolio
 
 A stunning, fully animated personal portfolio built with **Next.js 14**, **Tailwind CSS**, **Framer Motion**, and **tsParticles**.
 

@@ -9,7 +9,7 @@
   <circle cx="200" cy="150" r="120" fill="#00FFE0" opacity="0.08"/>
   <circle cx="1000" cy="480" r="150" fill="#7B2FFF" opacity="0.1"/>
   <text x="80" y="280" font-family="system-ui,sans-serif" font-size="72" font-weight="700" fill="#ffffff">Hrishitaa</text>
-  <text x="80" y="360" font-family="monospace" font-size="36" fill="#00FFE0">AI Engineer</text>
+  <text x="80" y="360" font-family="monospace" font-size="36" fill="#00FFE0">Software Engineer - AI</text>
   <text x="80" y="420" font-family="monospace" font-size="24" fill="#8888aa">MS Computer Science @ UIC</text>
   <text x="80" y="520" font-family="monospace" font-size="20" fill="#7B2FFF">ML · LLM · Data Pipelines</text>
 </svg>

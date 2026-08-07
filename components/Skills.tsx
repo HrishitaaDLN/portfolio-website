@@ -2,18 +2,18 @@ import Section from "@/components/ui/Section";
 import { SKILL_GROUPS } from "@/lib/data";
 import {
   FaBrain,
-  FaChartLine,
-  FaServer,
+  FaCloud,
+  FaCode,
   FaDatabase,
-  FaChartBar,
+  FaServer,
 } from "react-icons/fa";
 
 const ICONS: Record<string, React.ReactNode> = {
+  code: <FaCode className="text-cyan-accent" />,
   brain: <FaBrain className="text-cyan-accent" />,
-  chart: <FaChartLine className="text-cyan-accent" />,
   server: <FaServer className="text-violet-accent" />,
   database: <FaDatabase className="text-cyan-accent" />,
-  viz: <FaChartBar className="text-violet-accent" />,
+  cloud: <FaCloud className="text-violet-accent" />,
 };
 
 export default function Skills() {

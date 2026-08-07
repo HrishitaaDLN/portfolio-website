@@ -9,7 +9,7 @@ export default function Hero() {
     >
       <div className="max-w-6xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <p className="font-mono text-cyan-accent text-sm mb-4">AI Engineer Portfolio</p>
+          <p className="font-mono text-cyan-accent text-sm mb-4">Software Engineer - AI Portfolio</p>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
             Hi, I&apos;m{" "}
             <span className="bg-gradient-to-r from-cyan-accent to-violet-accent bg-clip-text text-transparent">
