@@ -38,6 +38,7 @@ export const SKILL_GROUPS = [
     skills: [
       "LLM APIs",
       "LangGraph",
+      "Amazon Bedrock",
       "RAG",
       "ChromaDB",
       "Prompt Engineering",
@@ -94,8 +95,9 @@ export const SKILL_GROUPS = [
       "Datadog",
       "Pytest",
       "Git",
-      "Cursor AI",
+      "Cursor",
       "Claude Code",
+      "Codex",
       "Salesforce",
       "Jira",
     ],
