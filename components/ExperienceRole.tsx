@@ -8,6 +8,7 @@ import { FaChevronDown } from "react-icons/fa";
 
 const TELEMETRY_ROLES = new Set([
   "Graduate Research Assistant",
+  "Full Stack Developer",
   "Associate Software Engineer",
   "Software Engineering Intern",
 ]);

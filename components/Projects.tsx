@@ -4,6 +4,10 @@ import Reveal from "@/components/ui/Reveal";
 import AgentOrbit from "@/components/visuals/AgentOrbit";
 import RagPulse from "@/components/visuals/RagPulse";
 import AccuracyCounter from "@/components/visuals/AccuracyCounter";
+import TransitPulse from "@/components/visuals/TransitPulse";
+import FairnessBalance from "@/components/visuals/FairnessBalance";
+import FinancePulse from "@/components/visuals/FinancePulse";
+import SurvivalCurve from "@/components/visuals/SurvivalCurve";
 import { PROJECTS } from "@/lib/data";
 import {
   ChurnIcon,
@@ -13,6 +17,7 @@ import {
   ReferralIcon,
 } from "@/components/visuals/ProjectIcons";
 import { FaExternalLinkAlt, FaFilePdf, FaGithub } from "react-icons/fa";
+import type { ReactNode } from "react";
 
 const ICON_MAP = {
   fairness: FairnessIcon,
@@ -21,6 +26,46 @@ const ICON_MAP = {
   clinical: ClinicalIcon,
   referral: ReferralIcon,
 };
+
+function ProjectVisual({ icon }: { icon: string }): ReactNode {
+  switch (icon) {
+    case "clinical":
+      return (
+        <>
+          <AccuracyCounter value={95} label="clinical extraction accuracy" showPlus />
+          <RagPulse />
+          <div className="md:hidden">
+            <AgentOrbit />
+          </div>
+        </>
+      );
+    case "referral":
+      return (
+        <>
+          <AccuracyCounter value={85} label="recall@5 on eval set" showPlus={false} />
+          <RagPulse />
+        </>
+      );
+    case "fairness":
+      return <FairnessBalance />;
+    case "fingpt":
+      return (
+        <>
+          <FinancePulse />
+          <RagPulse />
+        </>
+      );
+    case "churn":
+      return (
+        <>
+          <AccuracyCounter value={87} label="C-index (Weibull AFT)" showPlus={false} />
+          <SurvivalCurve />
+        </>
+      );
+    default:
+      return null;
+  }
+}
 
 export default function Projects() {
   return (
@@ -45,13 +90,7 @@ export default function Projects() {
 
           const Icon = ICON_MAP[project.icon as keyof typeof ICON_MAP];
           const showAgents = project.icon === "clinical";
-          const showRag = project.icon === "clinical" || project.icon === "referral";
-          const accuracy =
-            project.icon === "clinical"
-              ? { value: 95, label: "clinical extraction accuracy", showPlus: true }
-              : project.icon === "referral"
-                ? { value: 85, label: "recall@5 on eval set", showPlus: false }
-                : null;
+          const visual = <ProjectVisual icon={project.icon} />;
 
           return (
             <Reveal key={project.name} delayMs={i * 70}>
@@ -67,26 +106,8 @@ export default function Projects() {
                         {project.description}
                       </p>
 
-                      {accuracy && (
-                        <div className="mb-4">
-                          <AccuracyCounter
-                            value={accuracy.value}
-                            label={accuracy.label}
-                            showPlus={accuracy.showPlus}
-                          />
-                        </div>
-                      )}
-
-                      {showRag && (
-                        <div className="mb-4">
-                          <RagPulse />
-                        </div>
-                      )}
-
-                      {showAgents && (
-                        <div className="mb-4 md:hidden">
-                          <AgentOrbit />
-                        </div>
+                      {visual && (
+                        <div className="mb-4 space-y-4">{visual}</div>
                       )}
 
                       <div className="flex flex-wrap gap-2 mb-4">

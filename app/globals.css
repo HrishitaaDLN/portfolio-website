@@ -364,6 +364,27 @@
     background: rgba(0, 255, 224, 0.08) !important;
     animation: skill-glow 3.2s ease-in-out infinite;
   }
+
+  .fairness-beam {
+    transform-origin: 100px 28px;
+    animation: fairness-tilt 2.8s ease-in-out infinite;
+  }
+
+  .finance-line {
+    stroke-dasharray: 280;
+    stroke-dashoffset: 280;
+    animation: finance-draw 3.5s ease-in-out infinite;
+  }
+
+  .finance-tick {
+    animation: finance-pulse 1.6s ease-in-out infinite;
+  }
+
+  .survival-path {
+    stroke-dasharray: 260;
+    stroke-dashoffset: 260;
+    animation: survival-draw 3.8s ease-in-out infinite;
+  }
 }
 
 @keyframes fade-up {
@@ -654,6 +675,56 @@
   }
 }
 
+@keyframes fairness-tilt {
+  0%,
+  100% {
+    transform: rotate(-6deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+}
+
+@keyframes finance-draw {
+  0% {
+    stroke-dashoffset: 280;
+    opacity: 0.4;
+  }
+  45%,
+  70% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.75;
+  }
+}
+
+@keyframes finance-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    r: 3;
+  }
+  50% {
+    opacity: 1;
+    r: 5;
+  }
+}
+
+@keyframes survival-draw {
+  0% {
+    stroke-dashoffset: 260;
+    opacity: 0.35;
+  }
+  50%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -691,7 +762,11 @@
   .broken-path,
   .fixed-path,
   .skill-glow,
-  .nav-pipeline-fill {
+  .nav-pipeline-fill,
+  .fairness-beam,
+  .finance-line,
+  .finance-tick,
+  .survival-path {
     animation: none !important;
   }
 
@@ -707,6 +782,12 @@
 
   .broken-path {
     opacity: 0.2;
+  }
+
+  .finance-line,
+  .survival-path {
+    stroke-dashoffset: 0 !important;
+    opacity: 1 !important;
   }
 
   .glass-card:hover,
