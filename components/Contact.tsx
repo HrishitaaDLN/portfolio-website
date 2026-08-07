@@ -30,10 +30,21 @@ const CONTACT_LINKS = [
 export default function Contact() {
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get("name") || "").trim();
+    const email = String(data.get("email") || "").trim();
+    const message = String(data.get("message") || "").trim();
+
+    const subject = encodeURIComponent(`Portfolio message from ${name}`);
+    const body = encodeURIComponent(`From: ${name} <${email}>\n\n${message}`);
+    window.location.href = `mailto:${PERSON.email}?subject=${subject}&body=${body}`;
+
     setSent(true);
-    setTimeout(() => setSent(false), 3000);
+    form.reset();
+    setTimeout(() => setSent(false), 4000);
   };
 
   return (
@@ -76,26 +87,40 @@ export default function Contact() {
 
           <form onSubmit={handleSubmit} className="glass-card p-6 md:p-8 space-y-4">
             <div>
-              <label className="font-mono text-xs text-white/50 block mb-2">Name</label>
+              <label htmlFor="contact-name" className="font-mono text-xs text-white/50 block mb-2">
+                Name
+              </label>
               <input
+                id="contact-name"
+                name="name"
                 type="text"
                 required
+                autoComplete="name"
                 className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-mono text-sm focus:border-cyan-accent/50 focus:outline-none"
                 placeholder="Your name"
               />
             </div>
             <div>
-              <label className="font-mono text-xs text-white/50 block mb-2">Email</label>
+              <label htmlFor="contact-email" className="font-mono text-xs text-white/50 block mb-2">
+                Email
+              </label>
               <input
+                id="contact-email"
+                name="email"
                 type="email"
                 required
+                autoComplete="email"
                 className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-mono text-sm focus:border-cyan-accent/50 focus:outline-none"
                 placeholder="you@email.com"
               />
             </div>
             <div>
-              <label className="font-mono text-xs text-white/50 block mb-2">Message</label>
+              <label htmlFor="contact-message" className="font-mono text-xs text-white/50 block mb-2">
+                Message
+              </label>
               <textarea
+                id="contact-message"
+                name="message"
                 required
                 rows={4}
                 className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-mono text-sm focus:border-cyan-accent/50 focus:outline-none resize-none"
@@ -107,7 +132,7 @@ export default function Contact() {
               className="w-full flex items-center justify-center gap-2 py-3 rounded-lg font-mono text-sm bg-cyan-accent/15 border border-cyan-accent/40 text-white hover:bg-cyan-accent/25 transition-colors"
             >
               {sent ? (
-                "Message Sent ✓"
+                "Opening email…"
               ) : (
                 <>
                   Send Message <FaPaperPlane className="text-cyan-accent" />

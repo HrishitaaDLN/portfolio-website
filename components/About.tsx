@@ -1,29 +1,21 @@
 import Image from "next/image";
 import Section from "@/components/ui/Section";
-import { PERSON } from "@/lib/data";
+import { PERSON, SKILL_GROUPS } from "@/lib/data";
+import {
+  FaBrain,
+  FaCloud,
+  FaCode,
+  FaDatabase,
+  FaServer,
+} from "react-icons/fa";
 
-const TECH_TAGS = [
-  "LangGraph",
-  "RAG",
-  "ChromaDB",
-  "FastAPI",
-  "React",
-  "PostgreSQL",
-  "AWS",
-  "Docker",
-  "Kubernetes",
-  "Datadog",
-  "Python",
-  "TypeScript",
-];
-
-const SKILL_BARS = [
-  { label: "Gen AI", pct: 92 },
-  { label: "LLMs & Prompt Engineering", pct: 90 },
-  { label: "Agentic AI", pct: 88 },
-  { label: "Full-Stack", pct: 85 },
-  { label: "MLOps", pct: 85 },
-];
+const ICONS: Record<string, React.ReactNode> = {
+  code: <FaCode className="text-cyan-accent" />,
+  brain: <FaBrain className="text-cyan-accent" />,
+  server: <FaServer className="text-violet-accent" />,
+  database: <FaDatabase className="text-cyan-accent" />,
+  cloud: <FaCloud className="text-violet-accent" />,
+};
 
 export default function About() {
   return (
@@ -40,72 +32,30 @@ export default function About() {
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         <div className="space-y-5 text-white/70 leading-relaxed">
           <p className="text-lg text-white/80 font-medium">
-            I build AI systems that work in the real world - not just in notebooks.
+            I&apos;m Hrishitaa. I build AI systems that people actually use, not demos that die in a
+            notebook.
           </p>
 
           <p>
-            I&apos;m finishing my MS in Computer Science at UIC, where I research LLM-powered
-            pipelines and agentic systems as part of the IDIATER group. My work has been presented
-            to the Metropolitan Mayors Caucus and accepted at the Sustainability Research and
-            Innovation Congress spanning 80+ countries.
+            I just finished my MS in Computer Science at UIC, and I work across the whole stack —
+            React and TypeScript up front, Python and FastAPI behind it, all on AWS. But my favorite
+            work lives in the AI layer: multi-agent systems and RAG pipelines built with LangGraph
+            and Amazon Bedrock. I&apos;ve built a system that pulls clean, structured data out of
+            messy PDFs at 95%+ accuracy, and a clinical tool that doctors at UI Health use every
+            day.
           </p>
 
           <p>
-            Before grad school I spent two years at OpenText as a software engineer, working
-            directly with enterprise clients - presenting POCs, gathering feedback, and shipping
-            production systems serving 2M+ users. I learned early that the best engineering
-            isn&apos;t about elegant code. It&apos;s about finding what&apos;s broken and building
-            the fix that actually sticks.
+            Here&apos;s what I care about: the last 20%. The failure you catch before it hits
+            production. The workflow so smooth the user never thinks about it. Anyone can ship the
+            happy path — I sweat the rest.
           </p>
-
-          <p className="text-white/80">My technical work sits at the intersection of AI and real-world impact:</p>
-          <ul className="space-y-2 pl-4 list-disc marker:text-cyan-accent">
-            <li>Multi-agent systems with LangGraph, LangChain, and RAG pipelines</li>
-            <li>LLM document parsing and prompt engineering at production accuracy</li>
-            <li>Full-stack delivery from FastAPI backends to React frontends</li>
-            <li>Production observability with Datadog, CI/CD, Docker, and AWS</li>
-          </ul>
 
           <p>
-            I&apos;m genuinely excited about the space where AI meets enterprise — where agents stop
-            being demos and start being infrastructure. That&apos;s the problem I want to work on
-            next.
+            When I&apos;m not building software, I&apos;m painting or restoring old things. Turns
+            out it&apos;s the same job: take something rough or broken, and patiently make it work
+            again.
           </p>
-
-          <p className="text-white/60 text-sm">
-            Open to <span className="text-cyan-accent">Forward Deployed Engineer</span>,{" "}
-            <span className="text-cyan-accent">Applied AI Engineer</span>, and{" "}
-            <span className="text-cyan-accent">Prompt Engineering</span> roles at companies building
-            at the frontier.
-          </p>
-
-          <div className="space-y-4 pt-2">
-            {SKILL_BARS.map((skill) => (
-              <div key={skill.label}>
-                <div className="flex justify-between font-mono text-xs mb-1">
-                  <span className="text-white/60">{skill.label}</span>
-                  <span className="text-cyan-accent">{skill.pct}%</span>
-                </div>
-                <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-cyan-accent to-violet-accent"
-                    style={{ width: `${skill.pct}%` }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-wrap gap-2 pt-2">
-            {TECH_TAGS.map((tag) => (
-              <span
-                key={tag}
-                className="font-mono text-xs px-3 py-1.5 rounded-full border border-cyan-accent/20 bg-cyan-accent/5 text-cyan-accent/80"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
 
           <a
             href={`mailto:${PERSON.email}`}
@@ -140,6 +90,34 @@ export default function About() {
           <p className="font-mono text-xs text-cyan-accent/70 text-center lg:text-right">
             {PERSON.education}
           </p>
+        </div>
+      </div>
+
+      <div className="mt-16">
+        <h3 className="font-display text-2xl md:text-3xl font-bold mb-8">
+          Technical <span className="text-violet-accent">Skills</span>
+        </h3>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {SKILL_GROUPS.map((group) => (
+            <div key={group.title} className="glass-card p-6 h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 rounded-lg bg-cyan-accent/10 text-2xl">
+                  {ICONS[group.icon]}
+                </div>
+                <h4 className="font-display font-semibold text-lg leading-snug">{group.title}</h4>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {group.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="font-mono text-[11px] px-2 py-1 rounded bg-white/5 text-white/70 border border-white/5"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </Section>

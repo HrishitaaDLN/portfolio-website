@@ -18,7 +18,6 @@ export const TYPEWRITER_ROLES = [
 
 export const NAV_LINKS = [
   { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Research", href: "#research" },
@@ -39,7 +38,6 @@ export const SKILL_GROUPS = [
     skills: [
       "LLM APIs",
       "LangGraph",
-      "LangChain",
       "RAG",
       "ChromaDB",
       "Prompt Engineering",
@@ -48,11 +46,12 @@ export const SKILL_GROUPS = [
       "Guardrails",
       "PII Redaction",
       "Human-in-the-Loop",
+      "Hooks",
       "LangSmith",
     ],
   },
   {
-    title: "Full-Stack & APIs",
+    title: "Full-Stack & API Development",
     icon: "server",
     skills: [
       "React",
@@ -200,7 +199,7 @@ export const EXPERIENCE: ExperienceEntry[] = [
     period: "Aug 2022 – Oct 2022",
     bullets: [
       {
-        title: "S3 Multipart Uploads",
+        title: "Resolved customer issues that are impactful",
         description:
           "Owned resolution of a production-breaking 1 TB upload failure on a 2M+ user platform, implementing S3 multipart uploads to slash upload time by 60%.",
       },
