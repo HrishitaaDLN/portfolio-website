@@ -164,7 +164,7 @@ export default function Navbar() {
             ))}
           </ul>
           <p className="mt-auto font-mono text-xs text-white/35 pt-10">
-            Software Engineer - AI · UIC
+            AI/ML Engineer · PivotX Advisors
           </p>
         </nav>
       </div>

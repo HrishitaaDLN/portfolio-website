@@ -7,6 +7,7 @@ import Sparkline from "@/components/visuals/Sparkline";
 import { FaChevronDown } from "react-icons/fa";
 
 const TELEMETRY_ROLES = new Set([
+  "AI/ML Engineer",
   "Graduate Research Assistant",
   "Full Stack Developer",
   "Associate Software Engineer",

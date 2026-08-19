@@ -21,7 +21,11 @@ const ICONS: Record<string, React.ReactNode> = {
 
 const GLOW_SKILLS = new Set([
   "Amazon Bedrock",
+  "LangChain",
   "LangGraph",
+  "LangSmith",
+  "MCP",
+  "GCP",
   "RAG",
   "Datadog",
   "AWS",
@@ -52,12 +56,13 @@ export default function About() {
           </p>
 
           <p>
-            I just finished my MS in Computer Science at UIC, and I work across the whole stack —
-            React and TypeScript up front, Python and FastAPI behind it, all on AWS. But my favorite
-            work lives in the AI layer: multi-agent systems and RAG pipelines built with LangGraph
-            and Amazon Bedrock. I&apos;ve built a system that pulls clean, structured data out of
-            messy PDFs at 95%+ accuracy, and a clinical tool that doctors at UI Health use every
-            day.
+            I recently joined PivotX Advisors as an AI/ML Engineer, building enterprise agent
+            systems and LLM evaluation pipelines on GCP and AWS Bedrock. I also hold an MS in
+            Computer Science from UIC and work across the whole stack — React and TypeScript up
+            front, Python and FastAPI behind it. My favorite work lives in the AI layer: multi-agent
+            systems and RAG pipelines with LangGraph and LangChain. I&apos;ve built systems that pull
+            clean, structured data out of messy PDFs at 95%+ accuracy, and a clinical tool that
+            doctors at UI Health use every day.
           </p>
 
           <p>

@@ -1,7 +1,7 @@
 export const PERSON = {
   name: "Lakshmi Naga Hrishitaa Dharmavarapu",
   shortName: "Hrishitaa",
-  role: "Software Engineer - AI",
+  role: "AI/ML Engineer",
   education: "MS Computer Science @ UIC",
   email: "ldhar@uic.edu",
   github: "https://github.com/HrishitaaDLN",
@@ -11,6 +11,7 @@ export const PERSON = {
 
 export const TYPEWRITER_ROLES = [
   "Software Engineer - AI",
+  "AI/ML Engineer",
   "ML Researcher",
   "LLM Builder",
   "Data Scientist",
@@ -37,8 +38,10 @@ export const SKILL_GROUPS = [
     icon: "brain",
     skills: [
       "LLM APIs",
+      "LangChain",
       "LangGraph",
       "Amazon Bedrock",
+      "MCP",
       "RAG",
       "ChromaDB",
       "Prompt Engineering",
@@ -85,6 +88,7 @@ export const SKILL_GROUPS = [
     icon: "cloud",
     skills: [
       "AWS",
+      "GCP",
       "Vercel",
       "API Gateway",
       "S3",
@@ -119,6 +123,34 @@ export type ExperienceEntry = {
 };
 
 export const EXPERIENCE: ExperienceEntry[] = [
+  {
+    title: "AI/ML Engineer",
+    company: "PivotX Advisors",
+    location: "United States",
+    period: "Aug 2026 – Present",
+    bullets: [
+      {
+        title: "LLM Evaluation Platform",
+        description:
+          "Built a 0-dimension LLM evaluation platform (hybrid LLM-judge + deterministic) for an enterprise contact-center AI client — +10–12% accuracy on KB retrieval and tool-use; now the model-risk gate for every release.",
+      },
+      {
+        title: "Agent Factory on GCP",
+        description:
+          "Built a LangChain + LangGraph agent-factory on GCP for an industrial conglomerate's compliance and credit-risk screening — displaced 21,000+ analyst hours/year across 7,000 vendors.",
+      },
+      {
+        title: "Parallel Fan-Out Optimization",
+        description:
+          "Cut per-vendor LLM processing 75s → 12s (~84%) — LangSmith tracing surfaced a sequential judge bottleneck; rebuilt with parallel fan-out on LangChain LCEL.",
+      },
+      {
+        title: "Multi-Agent on AWS Bedrock",
+        description:
+          "Architected a multi-agent system on AWS Bedrock using MCP. A/B tested +65% completion on Proof of Service vs. legacy UI; now the default flow.",
+      },
+    ],
+  },
   {
     title: "Graduate Research Assistant",
     company: "UIC Business School",
