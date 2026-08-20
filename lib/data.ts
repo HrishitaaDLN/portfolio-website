@@ -12,7 +12,6 @@ export const PERSON = {
 export const TYPEWRITER_ROLES = [
   "Software Engineer - AI",
   "AI/ML Engineer",
-  "ML Researcher",
   "LLM Builder",
   "Data Scientist",
 ];
@@ -126,7 +125,7 @@ export const EXPERIENCE: ExperienceEntry[] = [
   {
     title: "AI/ML Engineer",
     company: "PivotX Advisors",
-    location: "United States",
+    location: "Boston, MA",
     period: "Aug 2026 – Present",
     bullets: [
       {
